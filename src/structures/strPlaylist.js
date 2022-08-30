@@ -1,9 +1,9 @@
 /////////////////////// IMPORTS //////////////////////////
-const { EmbedBuilder } = require("discord.js");
-const ytdl = require("ytdl-core");
-const sendError = require("../utils/error.js");
-const music_init = require("./createPlayer.js");
-const { joinVoiceChannel } = require("@discordjs/voice");
+const { Colors, EmbedBuilder } = require('discord.js');
+const ytdl = require('ytdl-core');
+const sendError = require('../utils/error.js');
+const music_init = require('./createPlayer.js');
+const { joinVoiceChannel } = require('@discordjs/voice');
 
 /////////////////////// SOURCE CODE ///////////////////////////
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
         isLive: video.isLive,
         author: message.member.user.tag,
         embed: {
-          author: { name: "Tocando agora:" },
+          author: { name: 'Tocando agora:' },
           color: Colors.DarkButNotBlack,
           title: `${video.title}`,
           thumbnail: {
@@ -30,18 +30,18 @@ module.exports = {
           },
           fields: [
             {
-              name: "> __Duração:__",
-              value: "```fix\n" + `${video.duration}` + "\n```",
+              name: '> __Duração:__',
+              value: '```fix\n' + `${video.duration}` + '\n```',
               inline: true,
             },
             {
-              name: "> __Canal:__",
-              value: "```fix\n" + `${channel.name}` + "\n```",
+              name: '> __Canal:__',
+              value: '```fix\n' + `${channel.name}` + '\n```',
               inline: true,
             },
             {
-              name: "> __Pedido por:___",
-              value: "```fix\n" + `${message.member.user.tag}` + "\n```",
+              name: '> __Pedido por:___',
+              value: '```fix\n' + `${message.member.user.tag}` + '\n```',
               inline: true,
             },
           ],
@@ -92,9 +92,17 @@ module.exports = {
           .setThumbnail(song.img)
           .setDescription(`[${song.title}](${song.url}) adicionado à fila`)
           .addFields(
-            { name: "> __**Duração:**__", value: "```fix\n" + `${song.duration}` + "\n```", inline: true },
-            { name: "> __**Pedido por:**__", value: "```fix\n" + `${message.author.tag}` + "\n```", inline: true }
-          )
+            {
+              name: '> __**Duração:**__',
+              value: '```fix\n' + `${song.duration}` + '\n```',
+              inline: true,
+            },
+            {
+              name: '> __**Pedido por:**__',
+              value: '```fix\n' + `${message.author.tag}` + '\n```',
+              inline: true,
+            }
+          );
         return serverQueue.textChannel.send({ embeds: [thing] });
       }
       return;
